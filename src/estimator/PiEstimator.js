@@ -1,18 +1,17 @@
 class PiEstimator {
   radius;
-  stimatedPoints;
   pointsInsideCircle;
-  pointsOutsieCircle;
+  pointsOutsideCircle;
   center;
 
-  constructor(radius = 50) {
+  constructor(radius) {
     this.radius = radius;
     this.reset();
   }
 
   reset() {
     this.pointsInsideCircle = [];
-    this.pointsOutsieCircle = [];
+    this.pointsOutsideCircle = [];
     this.center = {
       x: this.radius,
       y: this.radius
@@ -22,7 +21,7 @@ class PiEstimator {
   getEstimatedPiValue() {
     return (
       (4.0 * this.pointsInsideCircle.length) /
-      (this.pointsInsideCircle.length + this.pointsOutsieCircle.length)
+      (this.pointsInsideCircle.length + this.pointsOutsideCircle.length)
     );
   }
 
@@ -31,12 +30,16 @@ class PiEstimator {
   }
 
   add(point) {
-    let d = this.getDistance(point, this.center);
-    if (d < this.radius * this.radius) {
+    if (this.isPointInsideTheCircle(point)) {
       this.pointsInsideCircle.push(point);
     } else {
-      this.pointsOutsieCircle.push(point);
+      this.pointsOutsideCircle.push(point);
     }
+  }
+
+  isPointInsideTheCircle(point) {
+    let d = this.getDistance(point, this.center);
+    return d < this.radius * this.radius;
   }
 
   generateRandomPoint() {

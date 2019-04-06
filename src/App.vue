@@ -1,37 +1,37 @@
 <template>
   <div id="app">
+    <Canvas v-bind:radius="radius" v-bind:estimator="estimator"/>
     <button @click="startAproximation">start</button>
+    <button @click="reset">reset</button>
   </div>
 </template>
 
 <script>
 import Estimator from "./estimator/PiEstimator.js";
+import Canvas from "./components/Canvas.vue";
 
 export default {
   name: "app",
+  components: {
+    Canvas
+  },
   data() {
     return {
-      estimator: new Estimator()
+      radius: 150,
+      estimator: null
     };
   },
   methods: {
+    reset() {
+      this.estimator.reset();
+    },
     startAproximation() {
-      for (let i = 0; i < 1000000; i++) {
-        this.estimator.addRandomPoint();
-      }
+      this.estimator.addRandomPoint();
       console.log(this.estimator.getEstimatedPiValue());
     }
+  },
+  mounted() {
+    this.estimator = new Estimator(this.radius);
   }
 };
 </script>
-
-<style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
