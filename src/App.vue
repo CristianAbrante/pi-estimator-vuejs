@@ -1,7 +1,13 @@
 <template>
   <div id="app">
     <Canvas v-bind:radius="radius" v-bind:estimator="estimator"/>
-    <Controller :addHandler="onAddPoint" :playHandler="onPlay" :resetHandler="onReset"/>
+    <Controller
+      :reproductionHasBeenActivated="reproductionHasBeenActivated"
+      :reproductionIsActive="reproductionIsActive"
+      :addHandler="onAddPoint"
+      :playHandler="onPlay"
+      :resetHandler="onReset"
+    />
     <Information v-bind:estimator="estimator"/>
   </div>
 </template>
@@ -23,29 +29,35 @@ export default {
     return {
       radius: 150,
       estimator: null,
-      reproductionActivated: false,
-      execution: null
+      reproductionHasBeenActivated: false,
+      reproductionIsActive: false,
+      executionTimer: null
     };
   },
   methods: {
     onAddPoint() {
-      if (!this.reproductionActivated) {
+      if (!this.reproductionIsActive) {
         this.estimator.addRandomPoint();
       }
     },
     onPlay() {
-      if (!this.reproductionActivated) {
-        this.reproductionActivated = true;
-        this.execution = setInterval(
+      if (!this.reproductionHasBeenActivated) {
+        this.reproductionHasBeenActivated = true;
+      }
+      if (!this.reproductionIsActive) {
+        this.reproductionIsActive = true;
+        this.executionTimer = setInterval(
           () => this.estimator.addRandomPoint(),
-          100
+          50
         );
       } else {
-        this.reproductionActivated = false;
-        clearInterval(this.execution);
+        this.reproductionIsActive = false;
+        clearInterval(this.executionTimer);
       }
     },
     onReset() {
+      this.reproductionHasBeenActivated = false;
+      this.reproductionIsActive = false;
       this.estimator.reset();
     },
     startAproximation() {
