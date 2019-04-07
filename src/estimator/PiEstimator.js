@@ -18,11 +18,16 @@ class PiEstimator {
     };
   }
 
+  getPointsInsideCircle() {
+    return this.pointsInsideCircle.length;
+  }
+
+  getTotalPoints() {
+    return this.getPointsInsideCircle() + this.pointsOutsideCircle.length;
+  }
+
   getEstimatedPiValue() {
-    return (
-      (4.0 * this.pointsInsideCircle.length) /
-      (this.pointsInsideCircle.length + this.pointsOutsideCircle.length)
-    );
+    return (4.0 * this.getPointsInsideCircle()) / this.getTotalPoints();
   }
 
   addRandomPoint() {

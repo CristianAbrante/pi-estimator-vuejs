@@ -2,6 +2,7 @@
   <div id="app">
     <Canvas v-bind:radius="radius" v-bind:estimator="estimator"/>
     <Controller :addHandler="onAddPoint" :playHandler="onPlay" :resetHandler="onReset"/>
+    <Information v-bind:estimator="estimator"/>
   </div>
 </template>
 
@@ -9,12 +10,14 @@
 import Estimator from "./estimator/PiEstimator.js";
 import Canvas from "./components/Canvas.vue";
 import Controller from "./components/Controller.vue";
+import Information from "./components/Information.vue";
 
 export default {
   name: "app",
   components: {
     Canvas,
-    Controller
+    Controller,
+    Information
   },
   data() {
     return {
