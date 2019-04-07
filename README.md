@@ -1,29 +1,7 @@
 # pi-estimator
 
-## Project setup
-```
-npm install
-```
+Pi estimator using a Monte Carlo method, check out the user interface [here](https://cristianabrante.github.io/pi-estimator-vuejs/)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Author
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- **Cristian Abrante Dorta** - [CristianAbrante](https://github.com/CristianAbrante)
