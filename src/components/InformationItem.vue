@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3>{{this.itemName}}</h3>
-    <div>{{this.itemValue()}}</div>
+    <div class="data">{{this.itemValue()}}</div>
   </div>
 </template>
 
@@ -13,3 +13,20 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+h3 {
+  font-family: "Ubuntu";
+  border-bottom: 1px solid white;
+  color: white;
+  margin: 0;
+}
+
+.data {
+  margin: 10px 0px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.3rem;
+  color: grey;
+}
+</style>
+

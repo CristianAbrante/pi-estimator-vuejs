@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="information">
     <InformationItem
       v-for="(infoItem, index) in infoItems"
       v-bind:key="index"
@@ -46,3 +46,13 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.information {
+  background: #00d9ff;
+  width: 80%;
+  padding: 10px;
+  border-radius: 5px;
+}
+</style>
+

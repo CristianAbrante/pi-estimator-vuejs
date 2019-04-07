@@ -25,6 +25,7 @@ export default {
     },
     reset() {
       this.ctx.clearRect(0, 0, 2 * this.radius, 2 * this.radius);
+      this.ctx.strokeStyle = "grey";
       this.ctx.lineWidth = 3;
       this.ctx.beginPath();
       this.ctx.arc(this.radius, this.radius, this.radius, 0, 2 * Math.PI);
@@ -62,7 +63,8 @@ export default {
 
 <style scoped>
 canvas {
-  border: 3px solid black;
+  border: 3px solid grey;
+  background: white;
 }
 </style>
 
